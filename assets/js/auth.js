@@ -39,7 +39,7 @@ export const signIn = (email,pass) => {
     auth.signInWithEmailAndPassword(email,pass)
     .then(()=>{
       swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
-       alert("Has iniciado sesión con exito");
+       
       window.location.hash='#/home';
     })
     .catch((error)=>{
@@ -50,7 +50,7 @@ export const signIn = (email,pass) => {
     })
   }else{
      swal ( "¡Advertencia!" , "Error en el ingreso del usuario." , "error");
-       alert ("Error en el ingreso del usuario");
+      
   }
 }
 
