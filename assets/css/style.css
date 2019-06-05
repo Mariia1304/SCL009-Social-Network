@@ -51,6 +51,9 @@ input{
 	text-transform: uppercase;
 
 }
+input#txt-email,input#signup-email,input#txt-pass, input#signup-pass, input#signup-confirm{
+	text-transform: none;
+}
 input#sign-up,input#submit{
 	border-color:#cd457c;
 	background: #ff637d;
