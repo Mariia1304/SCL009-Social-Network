@@ -1,6 +1,6 @@
-//import { signIn, authGoogle } from "./../js/auth.js";
-//import { templateHome } from "./templateHome.js";
-//import { validateEmailSignIn } from "../js/validation.js";
+import { signIn, authGoogle } from "./../js/auth.js";
+import { templateWall } from "./templateWall.js";
+import { validateEmail } from "../js/validation.js";
 import { templateRegister } from "./templateRegister.js" 
 
 export const templateLogin = () =>{
@@ -41,36 +41,38 @@ export const templateLogin = () =>{
 
 		`;
 	
-	// document.getElementById('logIn').addEventListener('click', () => {
-	// 	let email = document.getElementById('txtEmail').value;
-	// 	let pass = document.getElementById('txtPassword').value;
-	// 	signIn(email,pass);
-	// 	 /*validacio en dom*/
-	// 	const emailerror = document.getElementById('emailerror');
-	// 	const passerror = document.getElementById('passerror');
- //        if(email==="" || !validateEmailSignIn(email)){
- //        	emailerror.style.display = "block";
- //            emailerror.innerHTML=`Debes ingresar un correo válido.`;
- //        }else{
- //        	emailerror.style.display = "none";
- //            emailerror.innerHTML='';
- //        }
+	document.getElementById('login').addEventListener('click', () => {
+		let userEmail = document.getElementById('txt-email').value;
+		let userPass = document.getElementById('txt-pass').value;
+		
+		 /*validacio en dom*/
+		const emailerror = document.getElementById('emailerror');
+		const passerror = document.getElementById('passerror');
+        if(userEmail==="" || !validateEmail(userEmail)){
+        	emailerror.style.display = "block";
+            emailerror.innerHTML="Debes ingresar un correo válido.";
+        }else{
+        	emailerror.style.display = "none";
+            emailerror.innerHTML='';
+             if(userPass==="" || userPass.length<6){
+	        	passerror.style.display = "block";
+	            passerror.innerHTML=`Debes ingresar una contraseña con minimo 6 caracteres.`;
+	        }else{
+	        	passerror.style.display = "none";
+	            passerror.innerHTML='';
+	            signIn(userEmail,userPass);
+	        }
+        }
         
- //        if(pass==="" || pass.length<6){
- //        	passerror.style.display = "block";
- //            passerror.innerHTML=`Debes ingresar una contraseña con minimo 6 caracteres.`;
- //        }else{
- //        	passerror.style.display = "none";
- //            passerror.innerHTML='';
- //        }
-
        
-	// });
+		
+       
+	});
 
-	//  document.getElementById('logInGoogle').addEventListener('click',()=>{
- //        authGoogle();
-
-	// });
+	 document.getElementById('login-google').addEventListener('click',()=>{
+        authGoogle();
+       
+	});
 	  document.getElementById('sign-up').addEventListener('click', ()=>{
 	  	templateRegister();
 	  	window.location.hash = '#/register';

@@ -1,15 +1,14 @@
-//Configuración de las rutas
-
-//importación de los templates constridos
-// import { templateLogin } from './assets/views/templateLogin.js';
-import { templateHome } from './assets/views/templateHome.js';
-import { templateProfile } from './assets/views/templateProfile.js';
-import { templateRegister } from './assets/views/templateRegister.js';
+//importación de las vistas
 import { templateLogin } from './assets/views/templateLogin.js';
+import { templateRegister } from './assets/views/templateRegister.js';
+import { templateWall } from './assets/views/templateWall.js';
+import { templateProfile } from './assets/views/templateProfile.js';
+
+
 
 const changeRoute = (hash) =>{
-	if (hash === '' || hash === '#/home' || hash === '#/register' || hash === '#/profile') {
-        //le pasa como parametro #/a la función showTemplate
+	if (hash === '' || hash === '#/wall' || hash === '#/register' || hash === '#/profile') {
+        //le pasa parametro #/ a la función showView
         return showView(hash);
 	}
 }
@@ -27,8 +26,8 @@ const showView = (hash) =>{
         case '':
             templateLogin();
             break;
-        case 'home':
-        	templateHome();
+        case 'wall':
+        	templateWall();
         	break;
         case 'profile':
             templateProfile();

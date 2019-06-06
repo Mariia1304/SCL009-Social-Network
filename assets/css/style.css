@@ -51,6 +51,16 @@ input{
 	text-transform: uppercase;
 
 }
+/*#password{
+	width: 19em;
+	position: relative;
+}*/
+/*.fa-eye,.fa-eye-slash{
+	position: absolute;
+	top:23%;
+	right: 10%;
+}
+*/
 input#txt-email,input#signup-email,input#txt-pass, input#signup-pass, input#signup-confirm{
 	text-transform: none;
 }
@@ -110,13 +120,13 @@ p#msge2,p#msge3{
 	max-width: 1000px;
 	margin: 0 auto; 
 }
-header#home{
-	height: 100px;
+header#wall{
+	
 	background-color: #F4F1BB;
 	color: white;
 	position: relative;
 }
-header#home::after{
+header#wall::after{
 	content: '';
 	clear: both;
 	display: block;
@@ -139,7 +149,7 @@ header#home::after{
 	margin: 0;
 	padding: 0;
 	list-style: none;
-
+ 
 }
 .site-nav li{
 	border-bottom: 1px solid #f4f1bb;
@@ -163,7 +173,7 @@ header#home::after{
 
 }
 .menu-toggle{
-	margin-top: 1.4em;
+	margin-top: 8.5%;
 	padding: 1em;
 	position: absolute;
 	top:0.5em;
@@ -233,10 +243,30 @@ header#home::after{
 
 	}
 }
-#home img{
-	max-width: 70%;
-	margin-top: -15px;
-	margin-left: -40px;
+#wall img{
+	max-width: 35%;
+	margin-left:20px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	
+}
+@media (min-width: 426px) and (max-width: 768px) {
+    #wall img{
+	max-width: 15%;
+	margin-left:20px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	
+	}
+}
+@media (min-width: 769px){
+    #wall img{
+	max-width: 10%;
+	margin-left:20px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	
+	}
 }
 /*perfil*/
 .perfil img{

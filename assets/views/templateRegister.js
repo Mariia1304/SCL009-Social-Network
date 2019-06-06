@@ -19,8 +19,9 @@ export const templateRegister = () => {
 		</div>
 		<p class="col-12 error" id="email-error">
 		</p>
-		<div class="col-12">
-			<input type="password" placeholder="contraseña" id="signup-pass">
+		<div id="password" class="col-12">
+			<input type="password" placeholder="contraseña" id="signup-pass">	
+			
 		</div>
 		<div class="col-12">
 			<input type="password" placeholder="confirma contraseña" id="signup-confirm">

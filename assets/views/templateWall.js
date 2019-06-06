@@ -1,10 +1,12 @@
 import { signOut } from './../js/auth.js';
 import { templateProfile } from './templateProfile.js';
 import { changeClass } from './../js/menu.js';
-export const templateHome = () =>{
+export const templateWall = () =>{
 	document.getElementById('root').innerHTML = `
-		<header id="home">
-			<a href="#"><img  src="./../assets/img/mama-sabe2.png" alt="logo"></a>			
+		<header id="wall">
+			<a href="#">
+				<img  src="./../assets/img/mama-sabe2.png" alt="logo">
+			</a>			
 			<nav id="site-nav" class="site-nav">
 				<ul>
 					<li>
