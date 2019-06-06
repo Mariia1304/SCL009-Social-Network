@@ -1,9 +1,9 @@
-import { validateNewUser, validateUser } from './validation.js';
+import { validateUser } from './validation.js';
 import { templateLogin } from './../views/templateLogin.js';
 import { templateWall } from './../views/templateWall.js';
 
 export const createNewUser = (newUserEmail,newUserPass) => {
-  if(validateNewUser(newUserEmail,newUserPass)){
+  if(validateUser(newUserEmail,newUserPass)){
     firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPass)
     .then(()=>{
       emailVerification();
@@ -77,7 +77,7 @@ export const authGoogle = () => {
       //The signed-in user info.
       var user = result.user;
       window.location.hash='#/wall';
-      swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
+      //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
       console.log(result.user);
     }).catch(function(error) {
       // Handle Errors here.
@@ -120,7 +120,7 @@ export const observer = () => {
 export const signOut = () =>{
   firebase.auth().signOut()
   .then(function() {
-    swal("Chao!");
+    //swal("Chao!");
     window.location.hash='';
   }).catch(function(error) {
     // An error happened.
