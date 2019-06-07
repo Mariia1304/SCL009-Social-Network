@@ -5,14 +5,14 @@ import { templateLogin } from "./templateLogin.js";
 export const templateRegister = () => {
 	document.getElementById('root').innerHTML = `
 	<header id="templatelogin">
-			<div class="logo row">
-				<div class="col-12"> 
-					<center>
-						<img src="assets/img/mama-sabe2.png" alt="logo">
-				   	</center>
-				</div>
+		<div class="logo row">
+			<div class="col-12"> 
+				<center>
+					<img src="assets/img/mama-sabe2.png" alt="logo">
+			   	</center>
 			</div>
-		</header>
+		</div>
+	</header>
 	<div class="row templateregister">											
 		<div class="col-12">
 			<input  id="signup-email" type="email" placeholder="email">

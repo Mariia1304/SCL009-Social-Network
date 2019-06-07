@@ -42,9 +42,10 @@ export const templateWall = () =>{
 		</header>
 		<main id="main">
 		</main>
-		<footer></footer>												`
+														`
 	changeClass();
-	document.getElementById('btn-logout').addEventListener('click', () => {
+	document.getElementById('btn-logout').addEventListener('click', (e) => {
+		e.preventDefault();
 		signOut();
 	});
 	document.getElementById('btn-profile').addEventListener('click', (e)=>{

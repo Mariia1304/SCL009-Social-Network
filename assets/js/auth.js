@@ -38,9 +38,15 @@ export const signIn = (userEmail,userPass) => {
     const auth = firebase.auth();
     auth.signInWithEmailAndPassword(userEmail,userPass)
     .then(()=>{
+      let user = firebase.auth().currentUser;
+      if(!user.emailVerified){
+        console.log(user.emailVerified);
+        alert('correo no verificado');
+        signOut();
+      }else{
       swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
       templateWall();
-      window.location.hash='#/wall';
+      window.location.hash='#/wall';}
     })
     .catch((error)=>{
        // Handle Errors here.
@@ -95,22 +101,17 @@ export const authGoogle = () => {
 /*Función Observador, que verifica que el usuario se encuentra logueado*/
 export const observer = () => {
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      if(window.location.hash===""|| window.location.hash==="/#"){
-        window.location.hash="#/wall";
-        window.onhashchange ="#/wall";
-        templateWall();
-
-      }
-      console.log('existe usuario logueado'); 
-      if(user.emailVerified){
-        console.log('verificado');
-      }
-    } else {
-      console.log('no existe usuario logueado');
-      window.location.hash="";
-      window.onhashchange ="";
-      templateLogin();
+    if(user===null){
+      console.log("No hay usuario")
+      return  window.location.hash = '';}
+    if (user.emailVerified) {
+      console.log(user.email)
+      window.location.hash = '#/wall';
+      // User is signed in.
+    }
+     if (!user.emailVerified && window.location.hash != '' && window.location.hash != '#/home'){
+       console.log("No verificado, redireccionando a home")
+       window.location.hash = '';
     }
   });
 }
@@ -118,6 +119,7 @@ export const observer = () => {
 /*Función signOut(), que sirve para que cuando el usuario cierre sesión, lo dirigia a la pantalla de inicio*/
 
 export const signOut = () =>{
+   if(confirm("¿Realmente deseas cerrar sesión?")){
   firebase.auth().signOut()
   .then(function() {
     //swal("Chao!");
@@ -125,6 +127,7 @@ export const signOut = () =>{
   }).catch(function(error) {
     // An error happened.
   });
+  }
 }
 
 

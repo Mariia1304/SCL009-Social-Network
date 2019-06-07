@@ -6,12 +6,36 @@ import { templateProfile } from './assets/views/templateProfile.js';
 
 
 
+// const changeRoute = (hash) =>{
+// 	if (hash === '' || hash === '#/wall' || hash === '#/register' || hash === '#/profile') {
+//         //le pasa parametro #/ a la función showView
+//         return showView(hash);
+// 	}
+// }
+ 
 const changeRoute = (hash) =>{
-	if (hash === '' || hash === '#/wall' || hash === '#/register' || hash === '#/profile') {
-        //le pasa parametro #/ a la función showView
+    if (hash === '#/profile') {
+        //le pasa como parametro #/home a la función showTemplate
         return showView(hash);
-	}
+    }
+
+    if (hash === '#/wall') {
+        //le pasa como parametro #/about a la función showTemplate
+        return showView(hash);
+    }
+
+    if (hash === '') {
+        //le pasa como parametro #/ a la función showTemplate
+        return showView(hash);
+    }
+
+    if (hash === '#/register') {
+        //le pasa como parametro #/ a la función showTemplate
+        return showView(hash);
+
+    }
 }
+
 
 const showView = (hash) =>{
     //necesito sacar el #/ a mi string

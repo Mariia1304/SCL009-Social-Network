@@ -27,7 +27,7 @@ body{
 /*estilo de pagina de inicio(sign in)*/
 #templatelogin img{
 	margin-top: 30px;
-	margin-bottom: 10px;
+	
 	max-width: 50%;
 	
 }
@@ -102,6 +102,10 @@ input#submit:focus{
 p.error {
 	color:#ff637d;
 	font-size:14px;
+}
+.msge:first-child{
+	margin-top: 0;
+	margin-bottom: 20px;
 }
 .msge{
 	color:#4a7c7c;
@@ -329,4 +333,24 @@ section#perfil{
 .fa-edit:focus{
 	color:#ff637d;
 	transition: .5s;
+}
+footer{
+	/*position: relative;*/
+	/*position: fixed;*/
+	/*bottom: 0px;*/
+	
+  	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background: #f4f1bb;	
+	margin-top: 20px;
+	text-align: center;
+}
+.fixed{
+	position: fixed;
+	bottom: 0px;
+}
+footer p{
+	
+	color: #66d7d1;
 }

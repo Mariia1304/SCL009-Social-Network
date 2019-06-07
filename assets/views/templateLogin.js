@@ -1,10 +1,11 @@
-import { signIn, authGoogle } from "./../js/auth.js";
+import { signIn, authGoogle, observer } from "./../js/auth.js";
 import { templateWall } from "./templateWall.js";
 import { validateEmail } from "../js/validation.js";
-import { templateRegister } from "./templateRegister.js" 
+import { templateRegister } from "./templateRegister.js" ;
+
 
 export const templateLogin = () =>{
-
+observer();
 	document.getElementById('root').innerHTML =
 		 /*html*/ `
 		<header id="templatelogin">
@@ -13,10 +14,14 @@ export const templateLogin = () =>{
 					<center>
 						<img src="assets/img/mama-sabe2.png" alt="logo">
 				   	</center>
-				</div>
+				</div>			
 			</div>
 		</header>
+		<main>
 		<div class="row templatelogin">
+			<p class="col-12 msge">
+				<i class="msge">Conectate con la guarderia de tu hij@</i>
+			</p>
 			<p class="col-12 msge" id="msge1">Si tienes cuenta accede aquí:</p>
 			<div class="col-12">
 				<input  id="txt-email" type="email" placeholder="email">
@@ -38,6 +43,8 @@ export const templateLogin = () =>{
 				<input type="button" id="sign-up" value="Registrarse">
 			</div>
 		</div>
+		</main>
+		
 
 		`;
 	
@@ -71,7 +78,7 @@ export const templateLogin = () =>{
 
 	 document.getElementById('login-google').addEventListener('click',()=>{
         authGoogle();
-       
+
 	});
 	  document.getElementById('sign-up').addEventListener('click', ()=>{
 	  	templateRegister();

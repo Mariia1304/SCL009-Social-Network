@@ -7,8 +7,18 @@ import { firebaseInit } from './assets/js/firebaseinit.js';
 const init = () => {	
     firebaseInit();
     initRoute();
-    observer();       
+    //observer();       
 }
 
+const footerPosition = () =>{
+	let height = screen.height;
 
+	
+	if(height > 700) {
+		
+		document.getElementById('footer').classList.add('fixed');
+	}
+}
 window.addEventListener('load', init);
+window.addEventListener('load', footerPosition);
+
