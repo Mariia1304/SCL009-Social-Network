@@ -9,7 +9,7 @@ observer();
 	document.getElementById('root').innerHTML =
 		 /*html*/ `
 		<header id="templatelogin">
-			<div class="logo row">
+			<div class="row">
 				<div class="col-12"> 
 					<center>
 						<img src="assets/img/mama-sabe2.png" alt="logo">

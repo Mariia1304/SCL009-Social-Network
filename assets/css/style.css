@@ -27,13 +27,12 @@ body{
 /*estilo de pagina de inicio(sign in)*/
 #templatelogin img{
 	margin-top: 10px;
-	
 	max-width: 50%;
 	
 }
 @media (min-width: 768px) {
 	#templatelogin img{
-	margin-top: 30px;
+	margin-top: 10px;
 	margin-bottom: 10px;
 	max-width: 25%;
 	
