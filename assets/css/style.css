@@ -26,7 +26,7 @@ body{
 }
 /*estilo de pagina de inicio(sign in)*/
 #templatelogin img{
-	margin-top: 30px;
+	margin-top: 10px;
 	
 	max-width: 50%;
 	
@@ -340,8 +340,8 @@ footer{
 	/*bottom: 0px;*/
 	
   	width: 100%;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	background: #f4f1bb;	
 	margin-top: 20px;
 	text-align: center;
