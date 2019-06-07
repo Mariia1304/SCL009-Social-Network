@@ -42,7 +42,7 @@ export const signIn = (userEmail,userPass) => {
       if(!user.emailVerified){
         console.log(user.emailVerified);
         alert('correo no verificado');
-        signOut();
+        firebase.auth().signOut();
       }else{
       //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
       templateWall();
