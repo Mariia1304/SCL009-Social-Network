@@ -11,7 +11,7 @@ const init = () => {
 }
 
 const footerPosition = () =>{
-	let height = screen.height;
+	let height = document.documentElement.clientHeight;
 
 	
 	if(height > 700) {
