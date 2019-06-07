@@ -1,8 +1,9 @@
 import { validateEmail } from "../js/validation.js";
-import { createNewUser } from "../js/auth.js";
+import { createNewUser, observer } from "../js/auth.js";
 import { templateLogin } from "./templateLogin.js";
 
 export const templateRegister = () => {
+	observer();
 	document.getElementById('root').innerHTML = `
 	<header id="templatelogin">
 		<div class="logo row">

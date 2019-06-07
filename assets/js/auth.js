@@ -44,7 +44,7 @@ export const signIn = (userEmail,userPass) => {
         alert('correo no verificado');
         signOut();
       }else{
-      swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
+      //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
       templateWall();
       window.location.hash='#/wall';}
     })
@@ -82,9 +82,11 @@ export const authGoogle = () => {
 
       //The signed-in user info.
       var user = result.user;
-      window.location.hash='#/wall';
+      observer();
+      
+     
       //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
-      console.log(result.user);
+      //console.log(result.user);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -99,22 +101,47 @@ export const authGoogle = () => {
 
 
 /*Función Observador, que verifica que el usuario se encuentra logueado*/
-export const observer = () => {
+// export const observer = () => {
+//   firebase.auth().onAuthStateChanged(function(user){
+//     console.log(user);
+//     if(user===null){
+//       console.log("No hay usuario");
+//       window.location.hash = '';}
+    
+//     if(user.emailVerified){
+//       console.log(user.email);
+//       window.location.hash = '#/wall';
+//       window.location.hash != '/#';
+//       window.location.hash != '';
+//       // User is signed in.
+//     }
+//      if (!user.emailVerified && window.location.hash != '' && window.location.hash != '#/home'){
+//        console.log("No verificado, redireccionando a home")
+//        window.location.hash = '';
+//     }
+//   });
+// }
+export const observer=() =>{
   firebase.auth().onAuthStateChanged(function(user) {
-    if(user===null){
-      console.log("No hay usuario")
-      return  window.location.hash = '';}
-    if (user.emailVerified) {
-      console.log(user.email)
-      window.location.hash = '#/wall';
-      // User is signed in.
-    }
-     if (!user.emailVerified && window.location.hash != '' && window.location.hash != '#/home'){
-       console.log("No verificado, redireccionando a home")
-       window.location.hash = '';
-    }
-  });
+console.log(user)
+if(user===null){
+  console.log("No hay usuario")
+  return  window.location.hash = '';
 }
+if (user.emailVerified) {
+  console.log(user.email)
+  window.location.hash = '#/wall';
+  // User is signed in.
+}
+ if (!user.emailVerified && window.location.hash != '' && window.location.hash != '#/home'){
+   console.log("No verificado, redireccionando a home")
+   window.location.hash = '';
+ }
+
+  })
+} 
+
+
 
 /*Función signOut(), que sirve para que cuando el usuario cierre sesión, lo dirigia a la pantalla de inicio*/
 

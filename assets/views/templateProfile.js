@@ -1,4 +1,7 @@
+import { observer } from './../js/auth.js';
+
 export const templateProfile = () => {
+	observer();
 	document.getElementById('main').innerHTML = `
 												<section id="perfil">
 													<div class="row">

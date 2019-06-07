@@ -1,7 +1,8 @@
-import { signOut } from './../js/auth.js';
+import { signOut, observer } from './../js/auth.js';
 import { templateProfile } from './templateProfile.js';
 import { changeClass } from './../js/menu.js';
 export const templateWall = () =>{
+	observer();
 	document.getElementById('root').innerHTML = `
 		<header id="wall">
 			<a href="#">
