@@ -67,37 +67,65 @@ export const signIn = (userEmail,userPass) => {
 }
 
 
-export const authGoogle = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    authentication(provider);
-  }
-  const authentication = (provider) => {
-    firebase.auth().signInWithRedirect(provider);
-    firebase.auth().getRedirectResult().then(function(result) {
-      if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-               // ...
-      }
+export const authGoogle = () =>{
+  /*Crea una instancia del objeto del proveedor de Google*/
+  var provider = new firebase.auth.GoogleAuthProvider();
+  /*Autentica con Firebase a través del objeto del proveedor de Google.*/
+  firebase.auth().signInWithPopup(provider)
+  .then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
 
-      //The signed-in user info.
-      var user = result.user;
-      observer();
+    alert("Has iniciado sesión con exito");
+    window.location.hash='#/wall';
+    // ...
+  })
+  .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
+}
+
+// export const authGoogle = () => {
+//     var provider = new firebase.auth.GoogleAuthProvider();
+//     authentication(provider);
+//   }
+//   const authentication = (provider) => {
+//     firebase.auth().signInWithRedirect(provider);
+//     firebase.auth().getRedirectResult().then(function(result) {
+//       if (result.credential) {
+//         // This gives you a Google Access Token. You can use it to access the Google API.
+//         var token = result.credential.accessToken;
+//                // ...
+//       }
+
+//       //The signed-in user info.
+//       var user = result.user;
+//       window.location.hash = '#/wall';
+//      // observer();
       
      
-      //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
-      //console.log(result.user);
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-  }
+//       //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
+//       //console.log(result.user);
+//     }).catch(function(error) {
+//       // Handle Errors here.
+//       var errorCode = error.code;
+//       var errorMessage = error.message;
+//       // The email of the user's account used.
+//       var email = error.email;
+//       // The firebase.auth.AuthCredential type that was used.
+//       var credential = error.credential;
+//       // ...
+//     });
+//   }
 
 
 /*Función Observador, que verifica que el usuario se encuentra logueado*/
