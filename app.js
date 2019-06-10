@@ -14,7 +14,7 @@ const footerPosition = () =>{
 	let height = document.documentElement.clientHeight;
 
 	
-	if(height > 660) {
+	if(height > 568) {
 		
 		document.getElementById('footer').classList.add('fixed');
 	}

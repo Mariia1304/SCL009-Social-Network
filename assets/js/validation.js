@@ -13,3 +13,10 @@ export const validateUser = (userEmail, userPass) => {
 		return true;
 	}
 }
+export const validateNewUser = (newUserEmail,newUserPass,newUserName,newUserLastName,childName) => {
+	if(!validateEmail(newUserEmail) || newUserEmail ==="" || newUserPass==="" || newUserPass.length<6 || newUserName === "" || newUserLastName === "" || childName ===""){
+		return false;
+	}else{
+		return true;
+	}
+}

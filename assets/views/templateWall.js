@@ -42,6 +42,14 @@ export const templateWall = () =>{
 			</div>
 		</header>
 		<main id="main">
+			<div id="messages" class="row templatewall">				
+			</div>
+			<div class="row templatewall">
+				<div class="col-12">
+					<textarea placeholder="escribe algo.." name=""  id="textarea" ></textarea>
+					<i class="fas fa-paper-plane"></i>
+				</div>
+			</div>
 		</main>
 														`
 	changeClass();

@@ -14,4 +14,8 @@ export const firebaseInit = () =>{
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
+
+    // Initialize Cloud Firestore through Firebase
+    return firebase.firestore();
+
 }
