@@ -55,6 +55,7 @@ export const templateWall = () =>{
 		</main>
 														`
 	changeClass();
+	//document.getElementById('posts').innerHTML ='';
 	readPost();
 	document.getElementById('btn-logout').addEventListener('click', (e) => {
 		e.preventDefault();

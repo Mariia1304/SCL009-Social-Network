@@ -13,7 +13,8 @@ export const createPost = (post) =>{
 	 			date: date,
 	 			message: post
 	 		}).then(()=>{
-	 			readPost();
+	 			document.getElementById('posts').innerHTML ='';
+	 			//readPost();
 	 			window.location.hash='/wall';
 	 		})
 	 	})
@@ -23,10 +24,10 @@ export const createPost = (post) =>{
 // read post
 export const readPost = () => {
   let db = firebase.firestore();
-  db.collection('post').get().then((querySnapshot) =>{
+  db.collection('post').onSnapshot((querySnapshot) =>{
   	querySnapshot.forEach((doc) =>{
-  		console.log(`${doc.id}`);
-  		// ${doc.data().message}
+  		
+  		
   		document.getElementById('posts').innerHTML +=
   		  		`<div class="container container__post">
 			  		<div class="row">
