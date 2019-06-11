@@ -16,6 +16,6 @@ export const firebaseInit = () =>{
 
 
     // Initialize Cloud Firestore through Firebase
-    return firebase.firestore();
+   return firebase.firestore();
 
 }

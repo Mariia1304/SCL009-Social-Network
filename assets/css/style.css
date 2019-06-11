@@ -38,7 +38,7 @@ body{
 	
 	}
 }
-.templatelogin, .templateregister, .templatewall{
+.templatelogin, .templateregister{
 	align-content: center;
 	text-align: center;
 }
@@ -122,11 +122,11 @@ p#msge2{
 }
 
 /*estilo de home*/
-.container{
+/*.container{
 	width: 100%;
 	max-width: 1000px;
 	margin: 0 auto; 
-}
+}*/
 header#wall{
 	
 	background-color: #F4F1BB;
@@ -302,14 +302,14 @@ header#wall::after{
 section#perfil{
 	margin-top: 2vh;
 }
-.fa-edit{
+.perfil-info-string .fa-edit{
  	color:#66d7d1; 
  	font-size: 1rem;
 	margin-left: 1rem;
 	cursor: pointer;
 }
-.fa-edit:hover,
-.fa-edit:focus{
+.perfil-info-string .fa-edit:hover,
+.perfil-info-string .fa-edit:focus{
 	color:#ff637d;
 	transition: .5s;
 }
@@ -362,7 +362,7 @@ footer p{
 	}
 }
 
-#textarea{
+#text-post{
 	margin:0;
 	float: left;
 	border-radius: 15px;
@@ -370,19 +370,19 @@ footer p{
 }
 
 @media (min-width: 320px) and (max-width: 425px){
-	#textarea{
+	#text-post{
 		width: 85%;
 	}
 }
 
 @media (min-width: 426px) and (max-width: 768px){
-	#textarea{
+	#text-post{
 		float: none;
 		width: 60%;
 	}
 }
 @media (min-width: 769px){
-	#textarea{
+	#text-post{
 		float: none;
 		width: 45%;
 	}
@@ -400,4 +400,40 @@ footer p{
 }
 .templatewall .col-12{
 	margin-top: 20px;
+}
+.post{
+
+	padding: 5px;
+	border-radius: 15px;
+	border: solid 1px #66d7d1;
+	background: #f4f1bb;
+	
+
+}
+.post p{
+	padding-top:5px;
+	padding-bottom: 5px;
+	margin:0;
+}
+.buttons{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+button#save, button#delete, button#edit, button#like{
+	border-radius: 5px;
+	padding: 5px;
+	border:solid 1px #66d7d1;
+	background: #f4f1bb;
+
+}
+.fa-trash-alt,.fa-edit,.fa-save,.fa-heart{
+	font-size: 15px;
+}
+
+.img-person img{
+	width: 20%;
+	border-radius: 50%;
+}
+.container__post{
+	margin-bottom: 20px;
 }

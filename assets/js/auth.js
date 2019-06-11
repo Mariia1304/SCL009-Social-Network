@@ -3,24 +3,30 @@ import { templateLogin } from './../views/templateLogin.js';
 import { templateWall } from './../views/templateWall.js';
 
 export const createNewUser = (newUserEmail,newUserPass,newUserName,newUserLastName,childName) => {
-  let db = firebase.firestore();
-  if(validateUser(newUserEmail,newUserPass,newUserName,newUserLastName,childName)){
+   
+  if(validateNewUser(newUserEmail,newUserPass,newUserName,newUserLastName,childName)){
     firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPass)
-     .then(()=>{
-      /*Base de datos, para almacenar de manera paralela en cloud firestore 
-      dichos datos del usuario*/
+     .then((doc)=>{
+       let db = firebase.firestore();
+       let uid = doc.user.uid;
         db.collection("users").add({
         email:newUserEmail,
         name:newUserName,
         lastname:newUserLastName,
-        childname:childName
-        })   
+        childname:childName,
+        uid:uid
+        }).then(function(docRef){
+          console.log("Document written with ID:", docRef.id);
+        }).catch(function(error){
+          console.error("Error adding document", error);
+        })  
+       
       })
      .then(()=>{
-      // console.log("Document successfully written!");
+      
       emailVerification();
-      swal ( "¡Felicitaciones!" , " Hemos enviado un correo de verificación de cuenta." , "success" );
-      //alert("Hemos enviado un correo de verificación de cuenta.");
+      swal ( "¡Felicitaciones!" , "Hemos enviado un correo de verificación de cuenta." , "success" );
+      
       window.location.hash = "";
       firebase.auth().signOut();
       templateLogin();      
@@ -79,6 +85,7 @@ export const signIn = (userEmail,userPass) => {
 
 
 export const authGoogle = () =>{
+  
   /*Crea una instancia del objeto del proveedor de Google*/
   var provider = new firebase.auth.GoogleAuthProvider();
   /*Autentica con Firebase a través del objeto del proveedor de Google.*/
@@ -88,6 +95,15 @@ export const authGoogle = () =>{
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
+    let db = firebase.firestore();
+    db.collection("users").add({
+      email:user.email,
+      name:user.displayName,
+      photo:user.photoURL,
+      uid: user.uid
+    })
+    
+    console.log(user.uid);
 
     alert("Has iniciado sesión con exito");
     window.location.hash='#/wall';
@@ -162,13 +178,13 @@ export const authGoogle = () =>{
 // }
 export const observer=() =>{
   firebase.auth().onAuthStateChanged(function(user) {
-console.log(user)
+//console.log(user)
 if(user===null){
   console.log("No hay usuario")
   return  window.location.hash = '';
 }
 if (user.emailVerified) {
-  console.log(user.email)
+  //console.log(user.email)
   window.location.hash = '#/wall';
   // User is signed in.
 }
