@@ -31,7 +31,7 @@ export const readPost = () => {
   		  		`<div class="container container__post">
 			  		<div class="row">
 				  		<div class="img-person col-4">
-				  			<img src="/assets/img/person.jpg" alt="" />	
+				  			<img src="assets/img/person.jpg" alt="" />	
 				  		</div>		
 				  		<div class="post col-4"> 
 				  			<p>
