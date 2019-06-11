@@ -402,7 +402,7 @@ footer p{
 	margin-top: 20px;
 }
 .post{
-
+	display: block;
 	padding: 5px;
 	border-radius: 15px;
 	border: solid 1px #66d7d1;
@@ -415,16 +415,25 @@ footer p{
 	padding-bottom: 5px;
 	margin:0;
 }
+.input input{
+	display: none;
+}
 .buttons{
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
-button#save, button#delete, button#edit, button#like{
+button.save, button.delete, button.edit, button.like{
 	border-radius: 5px;
 	padding: 5px;
 	border:solid 1px #66d7d1;
 	background: #f4f1bb;
 
+}
+button.save{
+	display: none;
+}
+button.edit{
+	display: inline;
 }
 .fa-trash-alt,.fa-edit,.fa-save,.fa-heart{
 	font-size: 15px;

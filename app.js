@@ -1,6 +1,6 @@
 
 import { initRoute } from './route.js';
-import { observer } from './assets/js/auth.js'
+//import { observer } from './assets/js/auth.js'
 import { firebaseInit } from './assets/js/firebaseinit.js';
 
 
