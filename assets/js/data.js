@@ -1,28 +1,36 @@
-// Crear post
+
 import { addEvents, printPost } from '../views/templateWall.js';
+import { validatePost} from './validation.js';
+// Crear Post
 export const createPost = (post) =>{
 	let db = firebase.firestore();
 	let date = Date.now();
-	console.log(date);
+	
 
 	 firebase.auth().onAuthStateChanged(user => {
 	 	db.collection('users').doc(user.uid).get().then(doc => {
-	 		db.collection('post').add({
-	 			uid: user.uid,
-	 			author: user.email,
-	 			date: date,
-	 			message: post
-	 		}).then(function(doc){
-	 			console.log("Document written with ID: ", doc.id);
+	 		if(validatePost(post)){
+		 		db.collection('post').add({
+		 			uid: user.uid,
+		 			author: user.email,
+		 			date: date,
+		 			message: post
+		 		}).then(function(doc){
+		 			console.log("Document written with ID: ", doc.id);
 
-	 			document.getElementById('text-post').value ='';
-	 			document.getElementById('text-post').focus();
-	 			window.location.hash='/wall';
-	 			readPost();
-	 			
-	 		}).catch(function(error) {
-            console.error("Error adding document: ", error);
-			});
+		 			document.getElementById('text-post').value ='';
+		 			document.getElementById('text-post').focus();
+		 			window.location.hash='/wall';
+		 			readPost();
+		 			
+		 		}).catch(function(error) {
+	            console.error("Error adding document: ", error);
+				});
+			}else{
+				console.log('error de validacion del post')
+				//return "error de validacion del post";
+
+			}
 	 	})
 	 })
 

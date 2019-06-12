@@ -46,7 +46,9 @@ export const templateWall = () =>{
 			<div class="row templatewall">
 				<div class="col-12">
 					<textarea placeholder="escribe algo.." name=""  id="text-post"></textarea>
+					
 					<i id="submit" class="fas fa-paper-plane"></i>
+					<p id="post-error" class="error"></p>
 				</div>
 			</div>
 			<div id="posts" class="row templatewall">				
@@ -67,8 +69,15 @@ export const templateWall = () =>{
 	});
 	document.getElementById('submit').addEventListener('click',()=>{
 		let post = document.getElementById('text-post').value;
-		
-		createPost(post);	
+		if(document.getElementById('text-post').value === ''|| document.getElementById('text-post').value<2){
+			document.getElementById('post-error').style.display = "block";
+			document.getElementById('post-error').innerHTML = "Publicación debe tener minimo 2 caracteres"
+		}else{
+			document.getElementById('post-error').style.display = "none";
+			createPost(post);
+		}
+
+			
 	});
 
 

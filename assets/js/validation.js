@@ -20,3 +20,13 @@ export const validateNewUser = (newUserEmail,newUserPass,newUserName,newUserLast
 		return true;
 	}
 }
+//funcion que valida si input del post no esta vacio
+
+export const validatePost = (post) =>{
+  if(post === ""|| post.length<2){
+    return false;
+
+  } else{
+    return true;
+  }
+}
