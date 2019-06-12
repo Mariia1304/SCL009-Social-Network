@@ -2,7 +2,7 @@
 import { addEvents, printPost } from '../views/templateWall.js';
 import { validatePost} from './validation.js';
 // Crear Post
-export const createPost = (post) =>{
+export const createPost = (post, count) =>{
 	let db = firebase.firestore();
 	let date = Date.now();
 	
@@ -14,7 +14,8 @@ export const createPost = (post) =>{
 		 			uid: user.uid,
 		 			author: user.email,
 		 			date: date,
-		 			message: post
+		 			message: post,
+		 			like: count
 		 		}).then(function(doc){
 		 			console.log("Document written with ID: ", doc.id);
 
@@ -40,6 +41,7 @@ export const readPost = () => {
   let db = firebase.firestore();
 
   db.collection('post').onSnapshot((querySnapshot) =>{
+
   	if(document.getElementById('posts')){
         document.getElementById('posts').innerHTML = '';
 	}

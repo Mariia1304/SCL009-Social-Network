@@ -69,12 +69,13 @@ export const templateWall = () =>{
 	});
 	document.getElementById('submit').addEventListener('click',()=>{
 		let post = document.getElementById('text-post').value;
+		let count = 0;
 		if(document.getElementById('text-post').value === ''|| document.getElementById('text-post').value<2){
 			document.getElementById('post-error').style.display = "block";
 			document.getElementById('post-error').innerHTML = "Publicación debe tener minimo 2 caracteres"
 		}else{
 			document.getElementById('post-error').style.display = "none";
-			createPost(post);
+			createPost(post, count);
 		}
 
 			
@@ -85,6 +86,7 @@ export const templateWall = () =>{
 
 export const printPost = (doc) => {
 	//let postDate = new Date(doc.data().date);
+	if(firebase.auth().currentUser.uid===doc.data().uid){
 	document.getElementById('posts').innerHTML +=
   		  		`<div class="container container__post">
 			  		<div class="row">
@@ -100,27 +102,75 @@ export const printPost = (doc) => {
 				  		<div class="buttons col-4">
 					  		<button class="delete" id="delete${doc.id}"><i class="fas fa-trash-alt"></i></button>
 					  		<button class="edit" id="edit${doc.id}"><i class="fas fa-edit"></i></button>
-					  		<button class="save" id="save${doc.id}"><i class="fas fa-save"></i></button>
-					  		<button class="like"><i class="fas fa-heart"></i></button>
+					  		<button class="save" id="save${doc.id}"><i class="fas fa-save"></i></button>	
+					  		<button class="like"><i id="like${doc.id}" class="fas fa-heart"></i> <span id="counter">
+                               ${doc.data().like}
+                            </span></button>
+					  		
 				  		</div>
 			  		</div>
 			  	</div>
 		  		
   				`
+  	}else{
+  		document.getElementById('posts').innerHTML +=
+  		  		`<div class="container container__post">
+			  		<div class="row">
+				  		<div class="img-person col-4">
+				  			<img src="assets/img/person.jpg" alt="" />	
+				  		</div>		
+				  		<div id="msg${doc.id}" class="post col-4"> 
+				  			<p>${doc.data().message}</p> 
+				  		</div>
+				  		<div class="input col-4">
+				  			<input id="inp${doc.id}" type="text">				  				
+				  		</div>
+				  		<div class="buttons col-4">
+					  		
+					  		<button class="like"><i id="like${doc.id}" class="fas fa-heart"></i><span id="counter">
+                                ${doc.data().like}
+                            </span></button>
+
+				  		</div>
+			  		</div>
+			  	</div>
+		  		
+  				`
+  	}
 }
 
 
 export const addEvents = (doc) =>{
-    
-        /*Evento que permite eliminar un post*/
+    if(firebase.auth().currentUser.uid===doc.data().uid){
+       // evento click para eliminar el post
         document.getElementById('delete'+doc.id).addEventListener('click', ()=>{
             deletePost(doc.id);
             console.log('hola');
         })
-        /*Evento que permite editar un post*/
+		// evento click para editar el post 
         document.getElementById('edit'+doc.id).addEventListener('click', ()=>{
             editPost(doc.id);
             console.log('editando');
         })
     }
+
+    document.getElementById('like'+doc.id).addEventListener('click',()=>{
+    	let count = doc.data().like;
+    	
+    	count += 1;
+    	console.log(count);
+    	let db = firebase.firestore();
+    	let docRef = db.collection('post').doc(doc.id);
+			return docRef.update({
+				like: count
+			})
+			.then(()=>{
+				console.log("Documento actualizado")
+			})
+			.catch((error)=>{
+				console.error(error);
+			})
+
+    })
+}
    

@@ -47,7 +47,7 @@ input{
 	padding: .6em;
 	border-radius: 10px;
 	width: 19em;
-	text-transform: uppercase;
+	
 
 }
 /*#password{
@@ -60,9 +60,7 @@ input{
 	right: 10%;
 }
 */
-input#txt-email,input#signup-email,input#txt-pass, input#signup-pass, input#signup-confirm{
-	text-transform: none;
-}
+
 input#sign-up,input#submit{
 	border-color:#cd457c;
 	background: #ff637d;
@@ -367,6 +365,7 @@ footer p{
 	float: left;
 	border-radius: 15px;
 	width: 23em;
+	border:solid 1px #66d7d1;
 }
 
 @media (min-width: 320px) and (max-width: 425px){
@@ -446,3 +445,4 @@ button.edit{
 .container__post{
 	margin-bottom: 20px;
 }
+ /*// if(firebase.auth().currentUser.uid===doc.data().user.uid){*/
