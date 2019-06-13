@@ -1,7 +1,7 @@
 import { signOut, observer } from './../js/auth.js';
 import { templateProfile } from './templateProfile.js';
 import { changeClass } from './../js/menu.js';
-import { createPost, readPost, deletePost, editPost, createLike, compareLike } from './../js/data.js';
+import { createPost, readPost, deletePost, editPost } from './../js/data.js';
 export const templateWall = () =>{
 	observer();
 	document.getElementById('root').innerHTML = `
@@ -47,7 +47,7 @@ export const templateWall = () =>{
 				<div class="col-12">
 					<textarea placeholder="escribe algo.." name=""  id="text-post"></textarea>
 					
-					<i id="submit" class="fas fa-paper-plane"></i>
+					<button class="submit"><i id="submit" class="fas fa-paper-plane"></i></button>
 					<p id="post-error" class="error"></p>
 				</div>
 			</div>
@@ -86,13 +86,19 @@ export const templateWall = () =>{
 }
 
 export const printPost = (doc) => {
-	//let postDate = new Date(doc.data().date);
+	let postDate = new Date(doc.data().date);
+	postDate = postDate.toLocaleString();
 	if(firebase.auth().currentUser.uid===doc.data().uid){
 	document.getElementById('posts').innerHTML +=
   		  		`<div class="container container__post">
 			  		<div class="row templatewall">
 				  		<div class="img-person col-12">
-				  			<img src="assets/img/person.jpg" alt="" />	
+				  			<div class="row img">
+				  					<img src="assets/img/person.jpg" alt="" />				  				
+				  					<p id="name">${doc.data().authorname}</p>
+				  					<p id="date">${postDate}</p>
+				  				
+				  			</div>	
 				  		</div>		
 				  		<div id="msg${doc.id}" class="post col-12"> 
 				  			<p>${doc.data().message}</p> 
@@ -118,7 +124,15 @@ export const printPost = (doc) => {
   		  		`<div class="container container__post">
 			  		<div class="row templatewall">
 				  		<div class="img-person col-12">
-				  			<img src="assets/img/person.jpg" alt="" />	
+				  			<div class="row img">
+				  				
+				  					<img src="assets/img/person.jpg" alt="" />
+				  				
+				  				
+				  					<p id="name">${doc.data().authorname}</p>
+				  					<p id="date">${postDate}</p>
+				  				
+				  			</div>	
 				  		</div>		
 				  		<div id="msg${doc.id}" class="post col-12"> 
 				  			<p>${doc.data().message}</p> 
@@ -139,11 +153,11 @@ export const printPost = (doc) => {
   				`;
 
   	}
- //  	let liked = doc.data().liked;
- //  	if(liked===true){
-	// 	document.getElementById('heart'+doc.id).style.color = "#ff637d";
+  	let liked = doc.data().liked;
+  	if(liked===true){
+		document.getElementById('heart'+doc.id).style.color = "#ff637d";
 		
-	// }
+	}
 }
 
 
@@ -152,7 +166,7 @@ export const addEvents = (doc) =>{
        // evento click para eliminar el post
         document.getElementById('delete'+doc.id).addEventListener('click', ()=>{
             deletePost(doc.id);
-            console.log('hola');
+            
         })
 		// evento click para editar el post 
         document.getElementById('edit'+doc.id).addEventListener('click', ()=>{
@@ -162,32 +176,33 @@ export const addEvents = (doc) =>{
     }
 
     document.getElementById('like'+doc.id).addEventListener('click',()=>{
-    	document.getElementById('heart'+doc.id).style.color = "#ff637d";
-    	let postid = document.getElementById('like'+doc.id).value;
-    	//console.log(postid);
-    	createLike(postid);
-    	compareLike();
-    	//createLike();
-    	// let liked = doc.data().liked;
-    	// if(liked === false){
-    	// let count = doc.data().like;
-     // 	count += 1;	
-     // 	liked = true;
-    	// let db = firebase.firestore();
-   //  	let docRef = db.collection('post').doc(doc.id);
-			// return docRef.update({
-			// 	like: count,
-			// 	liked: liked
-			// })
-			// .then(()=>{
-			// 	document.getElementById('like'+doc.id).disabled = true;
-			// 	document.getElementById('heart'+doc.id).style.color = "#ff637d";
-			// 	console.log("Documento actualizado")
-			// })
-			// .catch((error)=>{
-			// 	console.error(error);
-			// })
-		// }
+    	//document.getElementById('heart'+doc.id).style.color = "#ff637d";
+    	// let postid = document.getElementById('like'+doc.id).value;
+    	// let currentUser = firebase.auth().currentUser.uid;
+    	// console.log(postid);
+    	// console.log(currentUser);
+    	// compareLike(postid, currentUser);
+    	// createLike(postid);
+    	let liked = doc.data().liked;
+    	if(liked === false){
+    	let count = doc.data().like;
+     	count += 1;	
+     	liked = true;
+    	let db = firebase.firestore();
+    	let docRef = db.collection('post').doc(doc.id);
+			return docRef.update({
+				like: count,
+				liked: liked
+			})
+			.then(()=>{
+				document.getElementById('like'+doc.id).disabled = true;
+				document.getElementById('heart'+doc.id).style.color = "#ff637d";
+				console.log("Documento actualizado")
+			})
+			.catch((error)=>{
+				console.error(error);
+			})
+		}
 
 
 

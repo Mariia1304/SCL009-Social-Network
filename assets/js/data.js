@@ -8,12 +8,16 @@ export const createPost = (post, count, liked) =>{
 	
 
 	 firebase.auth().onAuthStateChanged(user => {
+	 	console.log(user);
+	 	getName(user.email);
 	 	db.collection('users').doc(user.uid).get().then(doc => {
 	 		if(validatePost(post)){
 		 		db.collection('post').add({
 
 		 			uid: user.uid,
 		 			author: user.email,
+		 			
+		 			authorname:user.name,
 		 			date: date,
 		 			message: post,
 		 			like: count,
@@ -43,7 +47,7 @@ export const createPost = (post, count, liked) =>{
 export const readPost = () => {
   let db = firebase.firestore();
 
-  db.collection('post').onSnapshot((querySnapshot) =>{
+  db.collection('post').orderBy("date", "desc").onSnapshot((querySnapshot) =>{
 
   	if(document.getElementById('posts')){
         document.getElementById('posts').innerHTML = '';
@@ -58,6 +62,20 @@ export const readPost = () => {
   	  
 }
 
+// obtener nombre de usuario para colocarlo en post
+
+
+const getName = (email) =>{
+    //consulta para obtener los datos del usuario, cuyo correo que se envia es igual al correo de la BD
+    let db = firebase.firestore();
+    let users = db.collection("users").where("email","==",email);
+    users.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc)=>{
+            firebase.auth().currentUser.name = doc.data().name;
+        })
+        
+    });
+}
 
 //delete post
 
@@ -100,39 +118,34 @@ export const editPost =(id)=>{
 	})
 }
 //creamos collection likes
-export const createLike = (id) =>{
-	let db = firebase.firestore();
-	db.collection('post').doc(id).get().then(doc =>{
-		db.collection('likes').add({
-			uid: doc.data().uid,
-			postid: id
-		}).then(function(doc){
- 			console.log("Document written with ID: ", doc.id);
- 		}).catch(function(error) {
-        console.error("Error adding document: ", error);
-		});
-	})
+// export const createLike = (id) =>{
+// 	let db = firebase.firestore();
+// 	db.collection('post').doc(id).get().then(doc =>{
+// 		db.collection('likes').add({
+// 			uid: doc.data().uid,
+// 			postid: id
+// 		}).then(function(doc){
+//  			console.log("Document written with ID: ", doc.id);
+//  		}).catch(function(error) {
+//         console.error("Error adding document: ", error);
+// 		});
+// 	})
 
-}
+// }
 
-export const  compareLike = () =>{
-	let currentUser = firebase.auth().currentUser.uid;
-	console.log(currentUser);
-	let db = firebase.firestore();
-			db.collection('likes').where("uid","==",currentUser)
-			.get()
-			.then(function(querySnapshot) {
-				
-		        querySnapshot.forEach(function(doc) {
-		            // doc.data() is never undefined for query doc snapshots
-		            console.log(doc.id);
-		            console.log(doc.data().postid);
-		            document.getElementById('heart'+doc.data().postid).style.color = "#ff637d";
-		            document.getElementById('like'+doc.data().postid).disabled = true;
+// export const  compareLike = (postid, currentUser) =>{
+	
+// 	let db = firebase.firestore();
+// 			db.collection('likes').where("postid","==",postid)
+// 			.get()
+//			.where("uid","===",currentUser)
+//		    .get()
+// 			.then(function(querySnapshot){
+// 		        querySnapshot.forEach(function(doc) {
 
-		        });
-		    })
-		    .catch(function(error) {
-		        console.log("Error getting documents: ", error);
-		    });
-}
+// 		        });
+// 		    })
+// 		    .catch(function(error) {
+// 		        console.log("Error getting documents: ", error);
+// 		    });
+// }
