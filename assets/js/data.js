@@ -2,7 +2,7 @@
 import { addEvents, printPost } from '../views/templateWall.js';
 import { validatePost} from './validation.js';
 // Crear Post
-export const createPost = (post, count) =>{
+export const createPost = (post, count, liked) =>{
 	let db = firebase.firestore();
 	let date = Date.now();
 	
@@ -11,11 +11,13 @@ export const createPost = (post, count) =>{
 	 	db.collection('users').doc(user.uid).get().then(doc => {
 	 		if(validatePost(post)){
 		 		db.collection('post').add({
+
 		 			uid: user.uid,
 		 			author: user.email,
 		 			date: date,
 		 			message: post,
-		 			like: count
+		 			like: count,
+		 			liked: liked
 		 		}).then(function(doc){
 		 			console.log("Document written with ID: ", doc.id);
 
@@ -23,10 +25,11 @@ export const createPost = (post, count) =>{
 		 			document.getElementById('text-post').focus();
 		 			window.location.hash='/wall';
 		 			readPost();
-		 			
+
 		 		}).catch(function(error) {
 	            console.error("Error adding document: ", error);
 				});
+
 			}else{
 				console.log('error de validacion del post')
 				//return "error de validacion del post";
@@ -96,4 +99,40 @@ export const editPost =(id)=>{
 		})
 	})
 }
+//creamos collection likes
+export const createLike = (id) =>{
+	let db = firebase.firestore();
+	db.collection('post').doc(id).get().then(doc =>{
+		db.collection('likes').add({
+			uid: doc.data().uid,
+			postid: id
+		}).then(function(doc){
+ 			console.log("Document written with ID: ", doc.id);
+ 		}).catch(function(error) {
+        console.error("Error adding document: ", error);
+		});
+	})
 
+}
+
+export const  compareLike = () =>{
+	let currentUser = firebase.auth().currentUser.uid;
+	console.log(currentUser);
+	let db = firebase.firestore();
+			db.collection('likes').where("uid","==",currentUser)
+			.get()
+			.then(function(querySnapshot) {
+				
+		        querySnapshot.forEach(function(doc) {
+		            // doc.data() is never undefined for query doc snapshots
+		            console.log(doc.id);
+		            console.log(doc.data().postid);
+		            document.getElementById('heart'+doc.data().postid).style.color = "#ff637d";
+		            document.getElementById('like'+doc.data().postid).disabled = true;
+
+		        });
+		    })
+		    .catch(function(error) {
+		        console.log("Error getting documents: ", error);
+		    });
+}

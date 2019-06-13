@@ -38,7 +38,7 @@ body{
 	
 	}
 }
-.templatelogin, .templateregister{
+.templatelogin, .templateregister, .templatewall{
 	align-content: center;
 	text-align: center;
 }
@@ -445,4 +445,6 @@ button.edit{
 .container__post{
 	margin-bottom: 20px;
 }
- /*// if(firebase.auth().currentUser.uid===doc.data().user.uid){*/
+.liked{
+	color:#ff637d;
+}
