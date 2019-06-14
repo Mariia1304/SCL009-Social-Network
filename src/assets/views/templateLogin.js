@@ -4,11 +4,10 @@ import { validateEmail } from "../js/validation.js";
 import { templateRegister } from "./templateRegister.js" ;
 import { footerPosition } from "../js/footerposition.js";
 
-
 export const templateLogin = () =>{
-observer();
+	observer();
 	document.getElementById('root').innerHTML =
-		 /*html*/ `
+		 `
 		<header id="templatelogin">
 			<div class="row">
 				<div class="col-12"> 
@@ -50,13 +49,12 @@ observer();
 		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
 		</footer>
 		`;
-		footerPosition();
-	
+	footerPosition();
+		
 	document.getElementById('login').addEventListener('click', () => {
 		let userEmail = document.getElementById('txt-email').value;
 		let userPass = document.getElementById('txt-pass').value;
-		
-		 /*validacio en dom*/
+		 /*validacion en dom*/
 		const emailerror = document.getElementById('emailerror');
 		const passerror = document.getElementById('passerror');
         if(userEmail==="" || !validateEmail(userEmail)){
@@ -74,17 +72,14 @@ observer();
 	            signIn(userEmail,userPass);
 	        }
         }
-        
-       
-		
-       
+      
 	});
 
-	 document.getElementById('login-google').addEventListener('click',()=>{
+	document.getElementById('login-google').addEventListener('click',()=>{
         authGoogle();
 
 	});
-	  document.getElementById('sign-up').addEventListener('click', ()=>{
+	document.getElementById('sign-up').addEventListener('click', ()=>{
 	  	templateRegister();
 	  	window.location.hash = '#/register';
 
