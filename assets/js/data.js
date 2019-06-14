@@ -7,7 +7,7 @@ export const createPost = (post, count, liked) =>{
 	let date = Date.now();
 	
 	 firebase.auth().onAuthStateChanged(user => {
-	 	console.log(user);
+	 	
 	 	getName(user.email);
 	 	db.collection('users').doc(user.uid).get().then(doc => {
 	 		if(validatePost(post)){
@@ -105,6 +105,10 @@ export const editPost =(id)=>{
 				message: post
 			})
 			.then(()=>{
+				document.getElementById(`msg${doc.id}`).style.display = "block";
+				document.getElementById(`inp${doc.id}`).style.display = "none";
+				document.getElementById(`save${doc.id}`).style.display = "none";
+				document.getElementById(`edit${doc.id}`).style.display = "inline";
 				console.log("Documento actualizado")
 			})
 			.catch((error)=>{

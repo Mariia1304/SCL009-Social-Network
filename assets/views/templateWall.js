@@ -7,7 +7,7 @@ export const templateWall = () =>{
 	document.getElementById('root').innerHTML = `
 		<header id="wall">
 			<a href="#">
-				<img  src="assets/img/mama-sabe2.png" alt="logo">
+				<img  src="/assets/img/mama-sabe2.png" alt="logo">
 			</a>			
 			<nav id="site-nav" class="site-nav">
 				<ul>
