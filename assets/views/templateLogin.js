@@ -2,7 +2,7 @@ import { signIn, authGoogle, observer } from "./../js/auth.js";
 import { templateWall } from "./templateWall.js";
 import { validateEmail } from "../js/validation.js";
 import { templateRegister } from "./templateRegister.js" ;
-import { footerPosition } from "/app.js";
+//import { footerPosition } from "/app.js";
 
 
 export const templateLogin = () =>{
@@ -50,7 +50,7 @@ observer();
 		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
 		</footer>
 		`;
-		footerPosition();
+		//footerPosition();
 	
 	document.getElementById('login').addEventListener('click', () => {
 		let userEmail = document.getElementById('txt-email').value;
