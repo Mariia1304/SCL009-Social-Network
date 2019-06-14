@@ -416,8 +416,7 @@ footer p{
 }
 .post p{
 	text-align: left;
-	padding-top:5px;
-	padding-bottom: 5px;
+	padding:5px 10px;
 	margin:0;
 	
 	font-size: .9em;
