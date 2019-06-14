@@ -6,43 +6,19 @@ import { templateProfile } from './assets/views/templateProfile.js';
 
 
 
-// const changeRoute = (hash) =>{
-// 	if (hash === '' || hash === '#/wall' || hash === '#/register' || hash === '#/profile') {
-//         //le pasa parametro #/ a la función showView
-//         return showView(hash);
-// 	}
-// }
- 
 const changeRoute = (hash) =>{
-    if (hash === '#/profile') {
-        //le pasa como parametro #/home a la función showTemplate
+	if (hash === '' || hash === '#/wall' || hash === '#/register' || hash === '#/profile') {
+        //le pasa parametro #/ a la función showView
         return showView(hash);
-    }
-
-    if (hash === '#/wall') {
-        //le pasa como parametro #/about a la función showTemplate
-        return showView(hash);
-    }
-
-    if (hash === '') {
-        //le pasa como parametro #/ a la función showTemplate
-        return showView(hash);
-    }
-
-    if (hash === '#/register') {
-        //le pasa como parametro #/ a la función showTemplate
-        return showView(hash);
-
-    }
+	}
 }
-
-
+ 
 const showView = (hash) =>{
-    //necesito sacar el #/ a mi string
+    // saco el #/ a  string
     const router = hash.substring(2);
-    //Obtener desde el html el id del elemento donde se imprimirá showTemplate
-    const mainRoot = document.getElementById('root');
-    mainRoot.innerHTML='';
+    //obtengo elemento de html donde voy a imprimir showView
+    const elRoot = document.getElementById('root');
+    elRoot.innerHTML='';
 
     //Se hace el match del hash utilizado y el template que quiero mostrar
     switch (router) {          
@@ -60,18 +36,14 @@ const showView = (hash) =>{
             templateRegister();
             break;    
         default:
-            mainRoot.innerHTML = `<p>Error 404</p>`
+            elRoot.innerHTML = `<p>Error 404. No encuentro la pagina</p>`
     }
 }
 
 export const initRoute = () =>{
     //evento que llama a toda la página, ya que necesito ir cambiando la url
     window.addEventListener('load',changeRoute(window.location.hash));
-    /*se le pasa como parametro window.location.hash, ya que es el parametro 
-    que tiene la página en ese momento*/
-
     //Metodo que reconocer si hubo un cambio en el hash y le pasa ese nuevo hash a changeRouter
-
     if('onhashchange' in window){
         //cuando reconoce un cambio en el hash, le pasa el hash cambiado
         window.onhashchange = () =>{

@@ -68,7 +68,7 @@ export const templateWall = () =>{
 	document.getElementById('btn-profile').addEventListener('click', (e)=>{
 		e.preventDefault();
 		templateProfile();
-		window.location.hash = '#/profile';
+		//window.location.hash = '#/profile';
 	});
 	document.getElementById('submit').addEventListener('click',()=>{
 		let post = document.getElementById('text-post').value;

@@ -60,9 +60,7 @@ export const readPost = () => {
 
 // obtener nombre de usuario para colocarlo en post
 
-
 const getName = (email) =>{
-    //consulta para obtener los datos del usuario, cuyo correo que se envia es igual al correo de la BD
     let db = firebase.firestore();
     let users = db.collection("users").where("email","==",email);
     users.get().then((querySnapshot) => {
@@ -80,7 +78,7 @@ export const deletePost = (id) =>{
     if(confirm("¿Seguro que quieres borrar tu publicación?")){
         db.collection("post").doc(id).delete().then(function() {
             console.log("Document successfully deleted!");
-           //readPost();
+           
                     
         }).catch(function(error) {
             console.error("Error removing document: ", error);

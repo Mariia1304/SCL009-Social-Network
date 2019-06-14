@@ -1,6 +1,6 @@
 //Función que valida el correo
 export const validateEmail = (email)=>{
-  /*expresión regular que simula el patron de búsqueda del correo electrónico*/
+  //expresión regular que simula el patron de búsqueda del correo electrónico
   let regEx = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
   return regEx.test(email);
 }
@@ -13,6 +13,7 @@ export const validateUser = (userEmail, userPass) => {
 		return true;
 	}
 }
+//valida datos de nuevo usuario
 export const validateNewUser = (newUserEmail,newUserPass,newUserName,newUserLastName,childName) => {
 	if(!validateEmail(newUserEmail) || newUserEmail ==="" || newUserPass==="" || newUserPass.length<6 || newUserName === "" || newUserLastName === "" || childName ===""){
 		return false;
@@ -20,7 +21,7 @@ export const validateNewUser = (newUserEmail,newUserPass,newUserName,newUserLast
 		return true;
 	}
 }
-//funcion que valida si input del post no esta vacio
+// valida si input del post no esta vacio
 
 export const validatePost = (post) =>{
   if(post === ""|| post.length<2){

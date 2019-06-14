@@ -38,7 +38,7 @@ export const createNewUser = (newUserEmail,newUserPass,newUserName,newUserLastNa
         console.log(errorCode);
         if (errorCode === "auth/email-already-in-use"){
           swal ( "¡Advertencia!" , "Este correo ya se encuentra en uso." , "info");
-          //alert("Este correo ya ha sido registrado");
+          
           document.getElementById('signup-email').value = '';
           document.getElementById('signup-email').focus();
         }
@@ -85,10 +85,9 @@ export const signIn = (userEmail,userPass) => {
 
 
 export const authGoogle = () =>{
-  
-  /*Crea una instancia del objeto del proveedor de Google*/
+ 
   var provider = new firebase.auth.GoogleAuthProvider();
-  /*Autentica con Firebase a través del objeto del proveedor de Google.*/
+
   firebase.auth().signInWithPopup(provider)
   .then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -125,61 +124,7 @@ export const authGoogle = () =>{
   });
 }
 
-// export const authGoogle = () => {
-//     var provider = new firebase.auth.GoogleAuthProvider();
-//     authentication(provider);
-//   }
-//   const authentication = (provider) => {
-//     firebase.auth().signInWithRedirect(provider);
-//     firebase.auth().getRedirectResult().then(function(result) {
-//       if (result.credential) {
-//         // This gives you a Google Access Token. You can use it to access the Google API.
-//         var token = result.credential.accessToken;
-//                // ...
-//       }
 
-//       //The signed-in user info.
-//       var user = result.user;
-//       window.location.hash = '#/wall';
-//      // observer();
-      
-     
-//       //swal ( "¡Bienvenid@!" , "Has iniciado sesión con exito." , "success" );
-//       //console.log(result.user);
-//     }).catch(function(error) {
-//       // Handle Errors here.
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//       // The email of the user's account used.
-//       var email = error.email;
-//       // The firebase.auth.AuthCredential type that was used.
-//       var credential = error.credential;
-//       // ...
-//     });
-//   }
-
-
-/*Función Observador, que verifica que el usuario se encuentra logueado*/
-// export const observer = () => {
-//   firebase.auth().onAuthStateChanged(function(user){
-//     console.log(user);
-//     if(user===null){
-//       console.log("No hay usuario");
-//       window.location.hash = '';}
-    
-//     if(user.emailVerified){
-//       console.log(user.email);
-//       window.location.hash = '#/wall';
-//       window.location.hash != '/#';
-//       window.location.hash != '';
-//       // User is signed in.
-//     }
-//      if (!user.emailVerified && window.location.hash != '' && window.location.hash != '#/home'){
-//        console.log("No verificado, redireccionando a home")
-//        window.location.hash = '';
-//     }
-//   });
-// }
 export const observer=() =>{
   firebase.auth().onAuthStateChanged(function(user) {
 //console.log(user)
@@ -199,10 +144,6 @@ if (user.emailVerified) {
 
   })
 } 
-
-
-
-/*Función signOut(), que sirve para que cuando el usuario cierre sesión, lo dirigia a la pantalla de inicio*/
 
 export const signOut = () =>{
    if(confirm("¿Realmente deseas cerrar sesión?")){
@@ -226,13 +167,3 @@ function emailVerification() {
     console.log(error);
   })
 }
-// firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
-//  .then(function() {
-//    // The link was successfully sent. Inform the user.
-//    // Save the email locally so you don't need to ask the user for it again
-//    // if they open the link on the same device.
-//    window.localStorage.setItem('emailForSignIn', email);
-//  })
-//  .catch(function(error) {
-//    // Some error occurred, you can inspect the code: error.code
-//  });

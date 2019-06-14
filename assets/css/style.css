@@ -464,6 +464,7 @@ button.edit{
 	float:left;
 	width: 15%;
 	border-radius: 50%;
+	margin-bottom: 10px;
 }
 @media (min-width: 768px) {
 	.img-person img{
