@@ -98,13 +98,13 @@ export const printPost = (doc) => {
 				  		<div class="img-person col-12">
 				  			<div class="row img">
 				  					<img src="assets/img/person.jpg" alt="" />				  				
-				  					<p id="name">${doc.data().authorname}</p>
-				  					<p id="date">${postDate}</p>
+				  					<p id="name" class="msge">${doc.data().authorname}</p>
+				  					<p id="date" class="msge">${postDate}</p>
 				  				
 				  			</div>	
 				  		</div>		
 				  		<div id="msg${doc.id}" class="post col-12"> 
-				  			<p>${doc.data().message}</p> 
+				  			<p class="msge">${doc.data().message}</p> 
 				  		</div>
 				  		<div class="input col-12">
 				  			<input id="inp${doc.id}" type="text">				  				
@@ -129,15 +129,15 @@ export const printPost = (doc) => {
 				  		<div class="img-person col-12">
 				  			<div class="row img">
 			  					<img src="assets/img/person.jpg" alt="" />
-			  					<p id="name">${doc.data().authorname}</p>
-			  					<p id="date">${postDate}</p>
+			  					<p class="msge" id="name">${doc.data().authorname}</p>
+			  					<p class="msge" id="date">${postDate}</p>
 				  			</div>	
 				  		</div>		
 				  		<div id="msg${doc.id}" class="post col-12"> 
-				  			<p>${doc.data().message}</p> 
+				  			<p class="msge">${doc.data().message}</p> 
 				  		</div>
 				  		<div class="input col-12">
-				  			<input id="inp${doc.id}" type="text">				  				
+				  			<input class="msge" id="inp${doc.id}" type="text">				  				
 				  		</div>
 				  		<div class="buttons col-12">
 					  		<button id="like${doc.id}" value="${doc.id}" class="like"><i id="heart${doc.id}" class="fas fa-heart"></i><span id="counter">
