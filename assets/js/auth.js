@@ -9,7 +9,7 @@ export const createNewUser = (newUserEmail,newUserPass,newUserName,newUserLastNa
      .then((doc)=>{
        let db = firebase.firestore();
        let uid = doc.user.uid;
-        db.collection("users").add({
+        db.collection("users").doc(uid).set({
         email:newUserEmail,
         name:newUserName,
         lastname:newUserLastName,
@@ -96,17 +96,21 @@ export const authGoogle = () =>{
     // The signed-in user info.
     var user = result.user;
     let db = firebase.firestore();
-    db.collection("users").add({
-      email:user.email,
-      name:user.displayName,
-      photo:user.photoURL,
-      uid: user.uid
-    })
-    
-    console.log(user.uid);
-
-    alert("Has iniciado sesión con exito");
-    window.location.hash='#/wall';
+    db.collection('users').doc(user.uid).get().then(function(doc){
+       if (doc.exists) {
+        alert("Has iniciado sesión con exito");
+        window.location.hash = '#/wall';
+       }else{
+        db.collection("users").doc(user.uid).set({
+          email:user.email,
+          name:user.displayName,
+          photo:user.photoURL,
+          uid: user.uid
+        })
+        alert("Has iniciado sesión con exito");
+        window.location.hash='#/wall';
+       }
+    });
     // ...
   })
   .catch(function(error) {

@@ -17,5 +17,8 @@ export const templateProfile = () => {
 														</div>
 													</div>
 												</section>
+												<footer id="footer">
+		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
+	</footer>
 												`
 }

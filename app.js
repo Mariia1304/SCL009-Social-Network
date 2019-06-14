@@ -10,15 +10,15 @@ const init = () => {
     //observer();       
 }
 
-// const footerPosition = () =>{
-// 	let height = document.documentElement.clientHeight;
+ export const footerPosition = () =>{
+	let height = document.documentElement.clientHeight;
 
 	
-// 	if(height > 568 && height<800) {
+	if(height > 569) {
 		
-// 		document.getElementById('footer').classList.add('fixed');
-// 	}
-// }
+		document.getElementById('footer').classList.add('fixed');
+	}
+}
 window.addEventListener('load', init);
-//window.addEventListener('load', footerPosition);
+
 

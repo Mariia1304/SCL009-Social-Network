@@ -54,6 +54,9 @@ export const templateWall = () =>{
 			<div id="posts" class="row templatewall">				
 			</div>			
 		</main>
+		<footer id="footer">
+		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
+	</footer>
 														`
 	changeClass();
 	readPost();
@@ -125,13 +128,9 @@ export const printPost = (doc) => {
 			  		<div class="row templatewall">
 				  		<div class="img-person col-12">
 				  			<div class="row img">
-				  				
-				  					<img src="assets/img/person.jpg" alt="" />
-				  				
-				  				
-				  					<p id="name">${doc.data().authorname}</p>
-				  					<p id="date">${postDate}</p>
-				  				
+			  					<img src="assets/img/person.jpg" alt="" />
+			  					<p id="name">${doc.data().authorname}</p>
+			  					<p id="date">${postDate}</p>
 				  			</div>	
 				  		</div>		
 				  		<div id="msg${doc.id}" class="post col-12"> 
@@ -141,7 +140,6 @@ export const printPost = (doc) => {
 				  			<input id="inp${doc.id}" type="text">				  				
 				  		</div>
 				  		<div class="buttons col-12">
-					  		
 					  		<button id="like${doc.id}" value="${doc.id}" class="like"><i id="heart${doc.id}" class="fas fa-heart"></i><span id="counter">
                                 ${doc.data().like}
                             </span></button>
@@ -153,11 +151,11 @@ export const printPost = (doc) => {
   				`;
 
   	}
-  	let liked = doc.data().liked;
-  	if(liked===true){
-		document.getElementById('heart'+doc.id).style.color = "#ff637d";
+ //  	let liked = doc.data().liked;
+ //  	if(liked===true){
+	// 	document.getElementById('heart'+doc.id).style.color = "#ff637d";
 		
-	}
+	// }
 }
 
 
@@ -184,7 +182,7 @@ export const addEvents = (doc) =>{
     	// compareLike(postid, currentUser);
     	// createLike(postid);
     	let liked = doc.data().liked;
-    	if(liked === false){
+    	
     	let count = doc.data().like;
      	count += 1;	
      	liked = true;
@@ -195,18 +193,13 @@ export const addEvents = (doc) =>{
 				liked: liked
 			})
 			.then(()=>{
-				document.getElementById('like'+doc.id).disabled = true;
+				//document.getElementById('like'+doc.id).disabled = true;
 				document.getElementById('heart'+doc.id).style.color = "#ff637d";
 				console.log("Documento actualizado")
 			})
 			.catch((error)=>{
 				console.error(error);
 			})
-		}
-
-
-
-
 
     })
 }

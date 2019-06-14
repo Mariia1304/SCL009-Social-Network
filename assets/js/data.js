@@ -6,17 +6,14 @@ export const createPost = (post, count, liked) =>{
 	let db = firebase.firestore();
 	let date = Date.now();
 	
-
 	 firebase.auth().onAuthStateChanged(user => {
 	 	console.log(user);
 	 	getName(user.email);
 	 	db.collection('users').doc(user.uid).get().then(doc => {
 	 		if(validatePost(post)){
 		 		db.collection('post').add({
-
 		 			uid: user.uid,
 		 			author: user.email,
-		 			
 		 			authorname:user.name,
 		 			date: date,
 		 			message: post,
@@ -24,7 +21,6 @@ export const createPost = (post, count, liked) =>{
 		 			liked: liked
 		 		}).then(function(doc){
 		 			console.log("Document written with ID: ", doc.id);
-
 		 			document.getElementById('text-post').value ='';
 		 			document.getElementById('text-post').focus();
 		 			window.location.hash='/wall';

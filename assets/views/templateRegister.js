@@ -1,6 +1,7 @@
 import { validateEmail } from "../js/validation.js";
 import { createNewUser } from "../js/auth.js";
 import { templateLogin } from "./templateLogin.js";
+import { footerPosition } from "/app.js";
 
 export const templateRegister = () => {
 
@@ -50,7 +51,11 @@ export const templateRegister = () => {
 			<input  type="button" id="back" value="Volver">
 		</div>
 	</div>
+	<footer id="footer">
+		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
+	</footer>
 												`;
+	footerPosition();
 	document.getElementById('submit').addEventListener('click', ()=>{
 		let newUserEmail = document.getElementById('signup-email').value;
 		let newUserPass = document.getElementById('signup-pass').value;
