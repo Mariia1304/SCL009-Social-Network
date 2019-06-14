@@ -1,7 +1,7 @@
 import { validateEmail } from "../js/validation.js";
 import { createNewUser } from "../js/auth.js";
 import { templateLogin } from "./templateLogin.js";
-import { footerPosition } from "../js/footerposition.js";;
+import { footerPosition } from "../js/footerposition.js";
 
 export const templateRegister = () => {
 
