@@ -175,7 +175,7 @@ export const signOut = () =>{
   }
 }
 
-
+//verificacion de correo
 function emailVerification() {
   let user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function() {
