@@ -8,7 +8,7 @@ import { templateProfile } from './assets/views/templateProfile.js';
 
 const changeRoute = (hash) =>{
 	if (hash === '' || hash === '#/wall' || hash === '#/register' || hash === '#/profile') {
-        //le pasa parametro #/ a la función showView
+        // si le paso  algunos de esos parametros que se cargue la vista
         return showView(hash);
 	}
 }
@@ -20,7 +20,7 @@ const showView = (hash) =>{
     const elRoot = document.getElementById('root');
     elRoot.innerHTML='';
 
-    //Se hace el match del hash utilizado y el template que quiero mostrar
+    //Se hace el match del hash obtenido y la vista que quiero imprimir
     switch (router) {          
         
         case '':
@@ -36,17 +36,19 @@ const showView = (hash) =>{
             templateRegister();
             break;    
         default:
-            elRoot.innerHTML = `<p>Error 404. No encuentro la pagina</p>`
+            elRoot.innerHTML = `<h1>Error 404. No encuentro la pagina</h1>`
     }
 }
 
 export const initRoute = () =>{
-    //evento que llama a toda la página, ya que necesito ir cambiando la url
+
+    //evento que llama a toda la página, porque necesito ir cambiando la url
     window.addEventListener('load',changeRoute(window.location.hash));
-    //Metodo que reconocer si hubo un cambio en el hash y le pasa ese nuevo hash a changeRouter
+    //Metodo que reconoce si fue un cambio del hash y le pasa  nuevo hash a changeRouter
     if('onhashchange' in window){
         //cuando reconoce un cambio en el hash, le pasa el hash cambiado
         window.onhashchange = () =>{
+
             changeRoute(window.location.hash);
         }
     }

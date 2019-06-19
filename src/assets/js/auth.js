@@ -3,21 +3,22 @@ import { templateLogin } from './../views/templateLogin.js';
 import { templateWall } from './../views/templateWall.js';
 
 export const createNewUser = (newUserEmail,newUserPass,newUserName,newUserLastName,childName) => {
-   
+  let db = firebase.firestore();
   if(validateNewUser(newUserEmail,newUserPass,newUserName,newUserLastName,childName)){
+
     firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPass)
-     .then((doc)=>{
-       let db = firebase.firestore();
-       let uid = doc.user.uid;
+     .then((doc_auth)=>{
+      
+       let uid = doc_auth.user.uid;
+       console.log(uid);
         db.collection("users").doc(uid).set({
         email:newUserEmail,
-        name:newUserName,
-        lastname:newUserLastName,
+        name:`${newUserName} ${newUserLastName}`,
         childname:childName,
         uid:uid
-        }).then(function(docRef){
-          console.log("Document written with ID:", docRef.id);
-        }).catch(function(error){
+        }).then(()=>{
+          console.log("Document written");
+        }).catch((error)=>{
           console.error("Error adding document", error);
         })  
        
