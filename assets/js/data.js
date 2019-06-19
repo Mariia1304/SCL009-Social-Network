@@ -14,7 +14,7 @@ export const createPost = (post, count, liked) =>{
 		 		db.collection('post').add({
 		 			uid: user.uid,
 		 			author: user.email,
-		 			authorname:user.name,
+		 			authorname:doc.data().name,
 		 			date: date,
 		 			message: post,
 		 			like: count,
