@@ -20,36 +20,29 @@ export const createNewUser = (newUserEmail,newUserPass,newUserName,newUserLastNa
         name:`${newUserName} ${newUserLastName}`,
         childname:childName,
         uid:uid
-        }).then(()=>{
-          console.log("Document written");
+        });
+      }).then(()=>{
+           emailVerification();
+           swal ( "¡Felicitaciones!" , "Hemos enviado un correo de verificación de cuenta." , "success" );
+           console.log("Document written");
+           window.location.hash = "";
+            //salimos de la app para que usuario verifique su correo
+          firebase.auth().signOut();
+          templateLogin();  
         }).catch((error)=>{
-          console.error("Error adding document", error);
-        })  
-       
-      })
-     .then(()=>{
-      //llamamos funcion de confirmacion de correo
-      emailVerification();
-      swal ( "¡Felicitaciones!" , "Hemos enviado un correo de verificación de cuenta." , "success" );
-      
-      window.location.hash = "";
-      //salimos de la app para que usuario verifique su correo
-      firebase.auth().signOut();
-      templateLogin();      
-      })
-      .catch((error)=>{
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode);
-        if (errorCode === "auth/email-already-in-use"){
-          swal ( "¡Advertencia!" , "Este correo ya se encuentra en uso." , "info");
-          
-          document.getElementById('signup-email').value = '';
-          document.getElementById('signup-email').focus();
-        }
-      // ...
+              //console.error("Error adding document", error);
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.log(errorCode);
+              if (errorCode === "auth/email-already-in-use"){
+              swal ( "¡Advertencia!" , "Este correo ya se encuentra en uso." , "info");
+              
+              document.getElementById('signup-email').value = '';
+              document.getElementById('signup-email').focus();
+              }
       });
+     
   }else{
      return "Error en la validación";
   }
