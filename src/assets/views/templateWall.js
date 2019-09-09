@@ -54,9 +54,7 @@ export const templateWall = () =>{
 			<div id="posts" class="row templatewall">				
 			</div>			
 		</main>
-		<footer id="footer">
-		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
-	</footer>
+		
 														`
 	changeClass();
 	readPost();

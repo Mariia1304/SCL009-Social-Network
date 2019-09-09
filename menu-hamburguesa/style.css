@@ -88,7 +88,7 @@ header::after{
 	border-radius: 3px;
 	transition: all ease-in-out 500ms;
 
-}
+} 
 .hamburger::before{
 	transform: translateY(-6px);
 

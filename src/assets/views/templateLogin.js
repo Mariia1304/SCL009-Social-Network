@@ -18,36 +18,33 @@ export const templateLogin = () =>{
 			</div>
 		</header>
 		<main>
-		<div class="row templatelogin">
-			<p class="col-12 msge">
-				<i class="msge">Conectate con la guarderia de tu hij@</i>
-			</p>
-			<p class="col-12 msge" id="msge1">Si tienes cuenta accede aquí:</p>
-			<div class="col-12">
-				<input  id="txt-email" type="email" placeholder="email">
+			<div class="row templatelogin">
+				<p class="col-12 msge">
+					<i class="msge">Conectate con la guarderia de tu hij@</i>
+				</p>
+				<p class="col-12 msge" id="msge1">Si tienes cuenta accede aquí:</p>
+				<div class="col-12">
+					<input  id="txt-email" type="email" placeholder="email">
+				</div>
+				<p class="col-12 error" id="emailerror"></p>
+				<div class="col-12">
+					<input type="password" placeholder="contraseña" id="txt-pass">
+				</div>
+				<p class="col-12 error" id="passerror"></p>
+				<div class="col-12">	
+					<input type="button" id="login" value="Iniciar sesión">
+				</div>
+				<p class="col-12 msge" id="msge2">Acceso con cuenta Google:</p>
+				<div class="col-12">
+					<input type="button" id="login-google" value="Acceder con Google">
+				</div>
+				<p class="col-12 msge" id="msge3">Todavía no tienes cuenta?</p>
+				<div class="col-12">
+					<input type="button" id="sign-up" value="Registrarse">
+				</div>
 			</div>
-			<p class="col-12 error" id="emailerror"></p>
-			<div class="col-12">
-				<input type="password" placeholder="contraseña" id="txt-pass">
-			</div>
-			<p class="col-12 error" id="passerror"></p>
-			<div class="col-12">	
-				<input type="button" id="login" value="Iniciar sesión">
-			</div>
-			<p class="col-12 msge" id="msge2">Acceso con cuenta Google:</p>
-			<div class="col-12">
-				<input type="button" id="login-google" value="Acceder con Google">
-			</div>
-			<p class="col-12 msge" id="msge3">Todavía no tienes cuenta?</p>
-			<div class="col-12">
-				<input type="button" id="sign-up" value="Registrarse">
-			</div>
-		</div>
 		</main>
 		
-		<footer id="footer">
-		<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
-		</footer>
 		`;
 	footerPosition();
 		
