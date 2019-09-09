@@ -51,11 +51,7 @@ export const templateRegister = () => {
 				<input  type="button" id="back" value="Volver">
 			</div>
 		</div>
-		<footer id="footer">
-			<p class="col-12">
-				Todos derechos reservados &copy MamaSabeApp
-			</p>
-		</footer>
+	
 	`;
 	footerPosition();
 	document.getElementById('submit').addEventListener('click', ()=>{

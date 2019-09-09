@@ -20,7 +20,7 @@ export const createNewUser = (newUserEmail,newUserPass,newUserName,newUserLastNa
         name:`${newUserName} ${newUserLastName}`,
         childname:childName,
         uid:uid
-        });
+        }); 
       }).then(()=>{
            emailVerification();
            swal ( "¡Felicitaciones!" , "Hemos enviado un correo de verificación de cuenta." , "success" );
