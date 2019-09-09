@@ -1,5 +1,5 @@
 import { observer } from './../js/auth.js';
-import { footerPosition } from "../js/footerposition.js";
+// import { footerPosition } from "../js/footerposition.js";
 export const templateProfile = () => {
 	observer();
 	document.getElementById('main').innerHTML = 
@@ -20,5 +20,5 @@ export const templateProfile = () => {
 		</section>
 		
 	`;
-	footerPosition();
+	// footerPosition();
 }
