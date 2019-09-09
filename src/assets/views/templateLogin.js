@@ -2,7 +2,7 @@ import { signIn, authGoogle, observer } from "./../js/auth.js";
 import { templateWall } from "./templateWall.js";
 import { validateEmail } from "../js/validation.js";
 import { templateRegister } from "./templateRegister.js" ;
-import { footerPosition } from "../js/footerposition.js";
+// import { footerPosition } from "../js/footerposition.js";
 
 export const templateLogin = () =>{
 	observer();
@@ -46,7 +46,7 @@ export const templateLogin = () =>{
 		</main>
 		
 		`;
-	footerPosition();
+	// footerPosition();
 		
 	document.getElementById('login').addEventListener('click', () => {
 		let userEmail = document.getElementById('txt-email').value;

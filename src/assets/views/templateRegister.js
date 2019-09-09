@@ -1,7 +1,7 @@
 import { validateEmail } from "../js/validation.js";
 import { createNewUser } from "../js/auth.js";
 import { templateLogin } from "./templateLogin.js";
-import { footerPosition } from "../js/footerposition.js";
+// import { footerPosition } from "../js/footerposition.js";
 
 export const templateRegister = () => {
 	document.getElementById('root').innerHTML = 
@@ -53,7 +53,7 @@ export const templateRegister = () => {
 		</div>
 	
 	`;
-	footerPosition();
+	// footerPosition();
 	document.getElementById('submit').addEventListener('click', ()=>{
 		let newUserEmail = document.getElementById('signup-email').value;
 		let newUserPass = document.getElementById('signup-pass').value;

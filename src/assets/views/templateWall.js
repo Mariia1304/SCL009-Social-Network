@@ -54,11 +54,13 @@ export const templateWall = () =>{
 			<div id="posts" class="row templatewall">				
 			</div>			
 		</main>
-		
+	
 														`
 	changeClass();
 	readPost();
-	
+	// <footer id="footer">
+	// 	<p class="col-12">Todos derechos reservados &copy MamaSabeApp</p>
+	// </footer> 
 	document.getElementById('btn-logout').addEventListener('click', (e) => {
 		e.preventDefault();
 		signOut();
