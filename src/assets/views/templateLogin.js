@@ -9,12 +9,14 @@ export const templateLogin = () =>{
 	document.getElementById('root').innerHTML =
 		 `
 		<header id="templatelogin">
+		<div class="container">	
 			<div class="row">
-				<div class="col-12"> 
+				<div class="col-12 "> 
 					<center>
 						<img src="assets/img/mama-sabe2.png" alt="logo">
 				   	</center>
 				</div>			
+			</div>
 			</div>
 		</header>
 		<main>
