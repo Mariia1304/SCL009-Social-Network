@@ -42,14 +42,18 @@ export const templateWall = () =>{
 				<div class="hamburger"></div>
 			</div>
 		</header>
-		<main id="main">
+		<main id="main" class="container">
 			<div class="row templatewall">
-				<div class="col-12">
-					<textarea placeholder="escribe algo.." name=""  id="text-post"></textarea>
+			<div class="container">
+			<div class="row">
+				<div class="col-10 offset-1" style="padding:0">
+					<textarea placeholder="    escribe algo.." name=""  id="text-post"></textarea>
 					
 					<button class="submit"><i id="submit" class="fas fa-paper-plane"></i></button>
 					<p id="post-error" class="error"></p>
 				</div>
+			</div>
+			</div>
 			</div>
 			<div id="posts" class="row templatewall">				
 			</div>			
@@ -95,21 +99,21 @@ export const printPost = (doc) => {
 	document.getElementById('posts').innerHTML +=
   		  		`<div class="container container__post">
 			  		<div class="row templatewall">
-				  		<div class="img-person col-12">
-				  			<div class="row img">
+				  		<div class="img-person col-10 offset-1">
+				  			<div class="img">
 				  					<img src="assets/img/person.jpg" alt="" />				  				
 				  					<p id="name" class="msge">${doc.data().authorname}</p>
 				  					<p id="date" class="msge">${postDate}</p>
 				  				
 				  			</div>	
 				  		</div>		
-				  		<div id="msg${doc.id}" class="post col-12"> 
+				  		<div id="msg${doc.id}" class="post col-10 offset-1"> 
 				  			<p class="msge">${doc.data().message}</p> 
 				  		</div>
-				  		<div class="input col-12">
+				  		<div class="input col-10 offset-1">
 				  			<input id="inp${doc.id}" type="text">				  				
 				  		</div>
-				  		<div class="buttons col-12">
+				  		<div class="buttons col-10 offset-1">
 					  		<button class="delete" id="delete${doc.id}"><i class="fas fa-trash-alt"></i></button>
 					  		<button class="edit" id="edit${doc.id}"><i class="fas fa-edit"></i></button>
 					  		<button class="save" id="save${doc.id}"><i class="fas fa-save"></i></button>	
@@ -126,20 +130,20 @@ export const printPost = (doc) => {
   		document.getElementById('posts').innerHTML +=
   		  		`<div class="container container__post">
 			  		<div class="row templatewall">
-				  		<div class="img-person col-12">
-				  			<div class="row img">
+				  		<div class="img-person col-10 offset-1">
+				  			<div class="img">
 			  					<img src="assets/img/person.jpg" alt="" />
 			  					<p class="msge" id="name">${doc.data().authorname}</p>
 			  					<p class="msge" id="date">${postDate}</p>
 				  			</div>	
 				  		</div>		
-				  		<div id="msg${doc.id}" class="post col-12"> 
+				  		<div id="msg${doc.id}" class="post col-10 offset-1"> 
 				  			<p class="msge">${doc.data().message}</p> 
 				  		</div>
-				  		<div class="input col-12">
+				  		<div class="input col-10 offset-1">
 				  			<input class="msge" id="inp${doc.id}" type="text">				  				
 				  		</div>
-				  		<div class="buttons col-12">
+				  		<div class="buttons col-10 offset-1">
 					  		<button id="like${doc.id}" value="${doc.id}" class="like"><i id="heart${doc.id}" class="fas fa-heart"></i><span id="counter">
                                 ${doc.data().like}
                             </span></button>
