@@ -130,7 +130,6 @@ p#msge2{
 }*/
 header
 #wall{
-	
 	background-color: #F4F1BB;
 	color: white;
 	position: relative;
@@ -144,7 +143,7 @@ header#wall::after{
 
 .site-nav{
 	z-index: 1;
-	top: 100%;
+	top: 12%;
 	right: 0;
 	position: absolute;
 	background-color: #ff637d;
@@ -155,12 +154,14 @@ header#wall::after{
 	clip-path: circle(150% at top right);
 }
 .site-nav ul{
+	
 	margin: 0;
 	padding: 0;
 	list-style: none;
  
 }
 .site-nav li{
+
 	border-bottom: 1px solid #f4f1bb;
 
 }
@@ -182,11 +183,11 @@ header#wall::after{
 
 }
 .menu-toggle{
-	margin-top: 8.5%;
+	
 	padding: 1em;
 	position: absolute;
-	top:0.5em;
-	right: 0.5em;
+	top:15px;
+	right: 0;
 }
 .menu-open .hamburger{
 	transform: rotate(45deg);
@@ -340,10 +341,10 @@ footer p{
 /*vista wall*/
 
 #wall img{
-	max-width: 35%;
-	margin-left:20px;
-	margin-top: 15px;
-	margin-bottom: 10px;
+	max-width: 25%;
+	margin-left:5px;
+	margin-top: 5px;
+	
 	
 }
 @media (min-width: 426px) and (max-width: 768px) {
@@ -366,10 +367,11 @@ footer p{
 }
 
 #text-post{
+	display: block;
 	margin:0;
 	float: left;
 	border-radius: 15px;
-	width: 23em;
+	width: 95%; 
 	border:solid 1px #66d7d1;
 }
 
@@ -381,16 +383,11 @@ footer p{
 
 @media (min-width: 426px) and (max-width: 768px){
 	#text-post{
-		float: none;
-		width: 60%;
+		
+		width: 93%;
 	}
 }
-@media (min-width: 769px){
-	#text-post{
-		float: none;
-		width: 45%;
-	}
-}
+
 .templatewall{
 	margin-top: 15px;
 }
@@ -433,18 +430,26 @@ p#name, p#date{
 }
 
 .buttons{
+	padding: 0;
 	align-content: right;
 	text-align: right;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
-button.save, button.delete, button.edit, button.like, button.submit{
-	border-radius: 5px;
+button.save, button.delete, button.edit, button.like{
+	border-radius: 8px;
 	padding: 5px;
 	border:solid 1px #66d7d1;
 	background: #f4f1bb;
 
 
+}
+button.submit{
+	margin-top:8px;
+	border-radius: 10px;
+	padding: 6px 8px;
+	border:solid 1px #66d7d1;
+	background: #f4f1bb;
 }
 button.save{
 	display: none;
@@ -462,25 +467,29 @@ button.edit{
 .fa-trash-alt:hover,.fa-trash-alt:focus,.fa-edit:hover, .fa-edit:focus{
 	color:#ff637d;
 }
+.img-person{
+	padding: 0;
+}
 .img-person img{
 	float:left;
 	width: 15%;
 	border-radius: 50%;
 	margin-bottom: 10px;
+
 }
 @media (min-width: 768px) {
 	.img-person img{
-		width: 10%;
+		width: 5%;
 		margin-bottom: 10px;
 	}
 }
-.img #name{
+#name{
 	margin-left: 10px;
 	float: left;
 	display: inline;
 	text-align: left;
 }
-.img #date{
+#date{
 	float: right;
 	display: inline;
 	text-align: left;	
